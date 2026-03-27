@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сторінку не знайдено — TechVolt</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .error-page { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:40px 24px; position:relative; }
+    .error-page__code { font-family:var(--font-head); font-size:clamp(6rem,20vw,12rem); font-weight:800; color:var(--accent); line-height:1; opacity:0.1; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+    .error-page__content { position:relative; z-index:1; }
+    .error-page__icon { font-size:4rem; margin-bottom:20px; }
+    .error-page__title { font-size:clamp(1.6rem,3vw,2.4rem); margin-bottom:12px; }
+    .error-page__desc { color:var(--text-muted); font-size:1.1rem; margin-bottom:8px; max-width:480px; }
+    .error-page__action { color:var(--text-muted); font-size:0.95rem; margin-bottom:36px; }
+    .error-page__buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .error-id { font-size:0.72rem; color:var(--text-dim); font-family:monospace; margin-top:32px; }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container">
+      <a href="../index.html" class="logo">⚡ Tech<span>Volt</span></a>
+    </nav>
+  </header>
+  <main class="error-page" role="main" aria-labelledby="error-title">
+    <div class="error-page__code" aria-hidden="true">404</div>
+    <div class="error-page__content">
+      <div class="error-page__icon">🔍</div>
+      <h1 id="error-title" class="error-page__title">Сторінку не знайдено</h1>
+      <p class="error-page__desc">Сторінка, яку ви шукаєте, не існує або була переміщена.</p>
+      <p class="error-page__action">Перевірте адресу або скористайтесь навігацією нижче.</p>
+      <div class="error-page__buttons">
+        <a href="../index.html" class="btn-primary">На головну</a>
+        <a href="javascript:history.back()" class="btn-ghost">Повернутись назад</a>
+      </div>
+      <div class="error-id" id="errorId"></div>
+    </div>
+  </main>
+  <script src="../js/logger.js"></script>
+  <script src="../js/error-handler.js"></script>
+  <script>
+    const errorId = 'ERR-404-' + Math.random().toString(36).slice(2,8).toUpperCase();
+    document.getElementById('errorId').textContent = 'ID: ' + errorId;
+    Logger.warn('Router', '404 — сторінку не знайдено', { errorId, requestedUrl: window.location.href });
+  </script>
+</body>
+</html>
