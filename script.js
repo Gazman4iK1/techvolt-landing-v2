@@ -1,13 +1,11 @@
 /**
  * @fileoverview Головний JavaScript файл лендінгу TechVolt.
- * Відповідає за три основні функції:
- * - Мобільна навігація (бургер-меню)
- * - Підсвічування активного посилання при скролі
- * - Плавний скрол до секцій
+ * Відповідає за навігацію, активні посилання та плавний скрол.
+ * Інтегровано Logger та ErrorHandler для логування та обробки помилок.
  *
  * @module script
  * @author Gazman4iK1
- * @version 1.2.0
+ * @version 1.3.0
  */
 
 // ===== НАВІГАЦІЯ (виправлено лінтером ESLint) =====
@@ -26,11 +24,7 @@ const navList = document.querySelector('.nav__list');
 
 /**
  * Ініціалізує бургер-меню для мобільної навігації.
- *
- * Логіка роботи:
- * - При кліку toggleє клас 'open' на navList
- * - Оновлює ARIA-атрибути (WCAG 2.1)
- * - При кліку на посилання — закриває меню
+ * Логує відкриття/закриття меню на рівні DEBUG.
  *
  * @example
  * // Після кліку на burger:
@@ -39,9 +33,14 @@ const navList = document.querySelector('.nav__list');
  */
 if (burger && navList) {
   burger.addEventListener('click', () => {
-    const isOpen = navList.classList.toggle('open');
-    burger.setAttribute('aria-expanded', isOpen);
-    burger.setAttribute('aria-label', isOpen ? 'Закрити меню' : 'Відкрити меню');
+    try {
+      const isOpen = navList.classList.toggle('open');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.setAttribute('aria-label', isOpen ? 'Закрити меню' : 'Відкрити меню');
+      Logger.debug('Navigation', `Бургер-меню ${isOpen ? 'відкрито' : 'закрито'}`);
+    } catch (e) {
+      ErrorHandler.handle(e, 'Navigation', { action: 'burger-click' });
+    }
   });
 
   navList.querySelectorAll('a').forEach((link) => {
@@ -49,6 +48,11 @@ if (burger && navList) {
       navList.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
     });
+  });
+} else {
+  Logger.warn('Navigation', 'Елементи навігації не знайдено', {
+    burger: !!burger,
+    navList: !!navList
   });
 }
 
@@ -68,11 +72,7 @@ const navLinks = document.querySelectorAll('.nav__link');
 
 /**
  * Intersection Observer для визначення активної секції при скролі.
- *
- * Алгоритм:
- * 1. Спостерігає за кожною секцією з id
- * 2. Коли секція займає більше 40% viewport — вважається активною
- * 3. Додає клас 'active' до відповідного навігаційного посилання
+ * Логує зміну активної секції на рівні DEBUG.
  *
  * @type {IntersectionObserver}
  *
@@ -86,22 +86,22 @@ const observer = new IntersectionObserver((entries) => {
       navLinks.forEach((link) => {
         link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
       });
+      Logger.debug('Navigation', `Активна секція: #${entry.target.id}`);
     }
   });
 }, { threshold: 0.4 });
 
 sections.forEach((section) => observer.observe(section));
 
+Logger.info('Navigation', 'Intersection Observer ініціалізовано', {
+  sectionsCount: sections.length
+});
+
 // ===== ПЛАВНИЙ СКРОЛ =====
 
 /**
  * Ініціалізує плавний скрол для всіх якірних посилань сторінки.
- *
- * Бізнес-логіка:
- * - Знаходить всі посилання вигляду href="#..."
- * - При кліку блокує стандартну поведінку браузера
- * - Запускає плавну прокрутку до цільового елементу
- * - Якщо елемент не знайдено — нічого не робить
+ * Логує переходи між секціями на рівні INFO.
  *
  * @example
  * // <a href="#about">Про роботу</a>
@@ -109,10 +109,20 @@ sections.forEach((section) => observer.observe(section));
  */
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', function handleClick(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        Logger.info('Navigation', `Перехід до секції: ${this.getAttribute('href')}`);
+      }
+    } catch (e) {
+      ErrorHandler.handle(e, 'Navigation', {
+        action: 'smooth-scroll',
+        href: this.getAttribute('href')
+      });
     }
   });
 });
+
+Logger.info('App', 'Ініціалізацію script.js завершено');
