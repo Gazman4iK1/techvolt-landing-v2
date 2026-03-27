@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="uk" itemscope itemtype="https://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ===== SEO Meta Tags ===== -->
+  <title>TechVolt — Розробка інтернет-магазину електроніки | Бакалаврська робота</title>
+  <meta name="description" content="Бакалаврська робота: розробка сучасного інтернет-магазину електроніки TechVolt з використанням HTML, CSS та JavaScript. Дослідження UX/UI, адаптивного дизайну та клієнтської веб-розробки." />
+  <meta name="keywords" content="інтернет-магазин, електроніка, веб-розробка, HTML, CSS, JavaScript, UX, UI, адаптивний дизайн, бакалаврська робота, e-commerce" />
+  <meta name="author" content="Студент університету" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <link rel="canonical" href="https://Gazman4iK1.github.io/techvolt-landing/" />
+
+  <!-- ===== Open Graph (Facebook, LinkedIn) ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TechVolt — Розробка інтернет-магазину електроніки" />
+  <meta property="og:description" content="Бакалаврська робота з розробки сучасного e-commerce рішення для продажу електроніки." />
+  <meta property="og:url" content="https://Gazman4iK1.github.io/techvolt-landing/" />
+  <meta property="og:image" content="https://Gazman4iK1.github.io/techvolt-landing/og-image.png" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:site_name" content="TechVolt Landing" />
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TechVolt — Бакалаврська робота" />
+  <meta name="twitter:description" content="Розробка інтернет-магазину електроніки: дослідження, реалізація, результати." />
+  <meta name="twitter:image" content="https://Gazman4iK1.github.io/techvolt-landing/og-image.png" />
+
+  <!-- ===== Schema.org Structured Data ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "name": "Розробка інтернет-магазину електроніки TechVolt",
+    "headline": "Розробка інтернет-магазину електроніки на основі сучасних веб-технологій",
+    "description": "Бакалаврська робота присвячена дослідженню та практичній реалізації сучасного інтернет-магазину електроніки з використанням HTML5, CSS3 та JavaScript.",
+    "keywords": "інтернет-магазин, електроніка, веб-розробка, e-commerce, UX/UI",
+    "inLanguage": "uk",
+    "educationalLevel": "bachelor",
+    "author": {
+      "@type": "Person",
+      "name": "Студент",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Університет"
+      }
+    },
+    "datePublished": "2025",
+    "url": "https://Gazman4iK1.github.io/techvolt-landing/"
+  }
+  </script>
+
+  <!-- ===== Favicons ===== -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- ===== Fonts ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== SKIP LINK (Accessibility) ===== -->
+  <a href="#main-content" class="skip-link">Перейти до основного вмісту</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" role="banner">
+    <nav class="nav container" role="navigation" aria-label="Головна навігація">
+      <a href="#" class="logo" aria-label="TechVolt — на початок сторінки">
+        <span class="logo__icon" aria-hidden="true">⚡</span>
+        Tech<span>Volt</span>
+      </a>
+      <ul class="nav__list" role="list">
+        <li><a href="#about" class="nav__link">Про роботу</a></li>
+        <li><a href="#goals" class="nav__link">Мета</a></li>
+        <li><a href="#methodology" class="nav__link">Методологія</a></li>
+        <li><a href="#results" class="nav__link">Результати</a></li>
+        <li><a href="#contact" class="nav__link">Контакти</a></li>
+      </ul>
+      <a href="en/index.html" class="btn-lang" aria-label="Switch to English version" lang="en">EN</a>
+      <button class="burger" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="nav-list">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__noise"></div>
+        <div class="hero__lines"></div>
+        <div class="hero__glow"></div>
+      </div>
+      <div class="container hero__content">
+        <div class="hero__badge" aria-label="Бакалаврська робота 2025">
+          <span aria-hidden="true">🎓</span> Бакалаврська робота · 2025
+        </div>
+        <h1 id="hero-title" class="hero__title">
+          Розробка інтернет&#8209;магазину<br />
+          <em>електроніки TechVolt</em>
+        </h1>
+        <p class="hero__title-en" lang="en" aria-label="English title">
+          Development of TechVolt Electronics Online Store
+        </p>
+        <p class="hero__desc">
+          Дослідження та практична реалізація сучасного e&#8209;commerce рішення
+          на основі HTML5, CSS3 та JavaScript з урахуванням принципів UX/UI дизайну,
+          доступності та адаптивності.
+        </p>
+        <div class="hero__keywords" aria-label="Ключові слова">
+          <span class="keyword">HTML5</span>
+          <span class="keyword">CSS3</span>
+          <span class="keyword">JavaScript</span>
+          <span class="keyword">UX/UI</span>
+          <span class="keyword">e-commerce</span>
+          <span class="keyword">адаптивний дизайн</span>
+        </div>
+        <div class="hero__actions">
+          <a href="#about" class="btn-primary">Дізнатись більше</a>
+          <a href="https://github.com/Gazman4iK1/techvolt" class="btn-ghost" target="_blank" rel="noopener noreferrer" aria-label="Переглянути код на GitHub (відкриється у новій вкладці)">
+            <span aria-hidden="true">↗</span> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="mockup">
+          <div class="mockup__bar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="mockup__screen">
+            <div class="mockup__nav"></div>
+            <div class="mockup__hero"></div>
+            <div class="mockup__cards">
+              <div class="mockup__card"></div>
+              <div class="mockup__card"></div>
+              <div class="mockup__card"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">01 · Про роботу</div>
+        <h2 id="about-title" class="section-title">Актуальність теми</h2>
+        <div class="about__grid">
+          <div class="about__text">
+            <p>Стрімкий розвиток електронної комерції в Україні та світі формує значний попит на якісні веб-рішення для онлайн-торгівлі. За даними досліджень, обсяг ринку e-commerce щороку зростає на 20–30%, що підтверджує актуальність розробки ефективних інтернет-магазинів.</p>
+            <p>Сучасний споживач очікує від онлайн-магазину швидкого завантаження, зручної навігації, адаптивності на всіх пристроях та доступності для людей з особливими потребами. Ці вимоги визначають технічний та дизайнерський напрямок дослідження.</p>
+            <p>Робота досліджує весь цикл розробки клієнтської частини e-commerce платформи — від проєктування архітектури до оптимізації продуктивності та SEO.</p>
+          </div>
+          <div class="about__stats" role="list" aria-label="Статистика проєкту">
+            <div class="stat-card" role="listitem">
+              <div class="stat-card__num" aria-label="5 сторінок">5</div>
+              <div class="stat-card__label">сторінок сайту</div>
+            </div>
+            <div class="stat-card" role="listitem">
+              <div class="stat-card__num" aria-label="16 товарів">16</div>
+              <div class="stat-card__label">товарів у каталозі</div>
+            </div>
+            <div class="stat-card" role="listitem">
+              <div class="stat-card__num" aria-label="100% адаптивний">100%</div>
+              <div class="stat-card__label">адаптивний дизайн</div>
+            </div>
+            <div class="stat-card" role="listitem">
+              <div class="stat-card__num" aria-label="WCAG 2.1">WCAG</div>
+              <div class="stat-card__label">стандарт доступності</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOALS -->
+    <section class="section goals" id="goals" aria-labelledby="goals-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">02 · Мета та завдання</div>
+        <h2 id="goals-title" class="section-title">Мета дослідження</h2>
+        <p class="section-desc">Розробити та дослідити повнофункціональний статичний інтернет-магазин електроніки з використанням сучасних веб-технологій.</p>
+        <ol class="tasks-list" aria-label="Основні завдання дослідження">
+          <li class="task-item">
+            <div class="task-item__num" aria-hidden="true">01</div>
+            <div class="task-item__body">
+              <h3>Аналіз існуючих рішень</h3>
+              <p>Дослідження провідних e-commerce платформ, виявлення переваг та недоліків існуючих підходів до розробки інтернет-магазинів електроніки.</p>
+            </div>
+          </li>
+          <li class="task-item">
+            <div class="task-item__num" aria-hidden="true">02</div>
+            <div class="task-item__body">
+              <h3>Проєктування архітектури</h3>
+              <p>Розробка структури проєкту, компонентної моделі інтерфейсу та схеми взаємодії між сторінками магазину.</p>
+            </div>
+          </li>
+          <li class="task-item">
+            <div class="task-item__num" aria-hidden="true">03</div>
+            <div class="task-item__body">
+              <h3>Реалізація інтерфейсу</h3>
+              <p>Розробка адаптивного, доступного та SEO-оптимізованого інтерфейсу з використанням HTML5, CSS3 і Vanilla JavaScript.</p>
+            </div>
+          </li>
+          <li class="task-item">
+            <div class="task-item__num" aria-hidden="true">04</div>
+            <div class="task-item__body">
+              <h3>Реалізація функціоналу кошика</h3>
+              <p>Впровадження системи управління кошиком покупок із збереженням стану через localStorage браузера.</p>
+            </div>
+          </li>
+          <li class="task-item">
+            <div class="task-item__num" aria-hidden="true">05</div>
+            <div class="task-item__body">
+              <h3>Тестування та оптимізація</h3>
+              <p>Перевірка кросбраузерної сумісності, валідація коду, оптимізація швидкодії та перевірка відповідності стандартам WCAG 2.1.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="section methodology" id="methodology" aria-labelledby="method-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">03 · Методологія</div>
+        <h2 id="method-title" class="section-title">Методологія дослідження</h2>
+        <div class="method__grid">
+          <article class="method-card" aria-labelledby="method-1">
+            <div class="method-card__icon" aria-hidden="true">🔍</div>
+            <h3 id="method-1">Аналіз та порівняння</h3>
+            <p>Порівняльний аналіз існуючих інтернет-магазинів електроніки: Rozetka, Foxtrot, Comfy. Виявлення UX-патернів та архітектурних підходів.</p>
+          </article>
+          <article class="method-card" aria-labelledby="method-2">
+            <div class="method-card__icon" aria-hidden="true">🎨</div>
+            <h3 id="method-2">Дизайн-мислення</h3>
+            <p>Застосування методології Design Thinking для проєктування інтерфейсу: емпатія, визначення, генерація ідей, прототипування, тестування.</p>
+          </article>
+          <article class="method-card" aria-labelledby="method-3">
+            <div class="method-card__icon" aria-hidden="true">⚙️</div>
+            <h3 id="method-3">Ітеративна розробка</h3>
+            <p>Покрокова реалізація функціоналу з використанням GitHub Flow: feature-гілки, pull requests, code review, злиття в main.</p>
+          </article>
+          <article class="method-card" aria-labelledby="method-4">
+            <div class="method-card__icon" aria-hidden="true">✅</div>
+            <h3 id="method-4">Тестування якості</h3>
+            <p>Валідація HTML/CSS через W3C Validator, перевірка доступності через axe DevTools, аудит продуктивності через Google Lighthouse.</p>
+          </article>
+        </div>
+        <div class="tech-stack" aria-label="Технологічний стек">
+          <h3 class="tech-stack__title">Технологічний стек</h3>
+          <div class="tech-stack__grid">
+            <div class="tech-pill">HTML5</div>
+            <div class="tech-pill">CSS3</div>
+            <div class="tech-pill">JavaScript ES6+</div>
+            <div class="tech-pill">localStorage API</div>
+            <div class="tech-pill">CSS Grid</div>
+            <div class="tech-pill">Flexbox</div>
+            <div class="tech-pill">CSS Custom Properties</div>
+            <div class="tech-pill">Google Fonts</div>
+            <div class="tech-pill">Git / GitHub</div>
+            <div class="tech-pill">GitHub Pages</div>
+            <div class="tech-pill">Schema.org</div>
+            <div class="tech-pill">Open Graph</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section results" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">04 · Результати</div>
+        <h2 id="results-title" class="section-title">Очікувані результати</h2>
+        <div class="results__grid">
+          <div class="result-item">
+            <div class="result-item__icon" aria-hidden="true">🌐</div>
+            <h3>Повнофункціональний сайт</h3>
+            <p>Багатосторінковий інтернет-магазин електроніки з каталогом, фільтрацією, кошиком та сторінками про компанію і контакти.</p>
+          </div>
+          <div class="result-item">
+            <div class="result-item__icon" aria-hidden="true">📱</div>
+            <h3>Адаптивний дизайн</h3>
+            <p>Коректне відображення на всіх пристроях: desktop, планшет, мобільний. Підтримка екранів від 320px до 2560px.</p>
+          </div>
+          <div class="result-item">
+            <div class="result-item__icon" aria-hidden="true">♿</div>
+            <h3>Доступність WCAG 2.1</h3>
+            <p>Семантична розмітка, ARIA-атрибути, підтримка клавіатурної навігації та скрін-рідерів. Відповідність рівню AA.</p>
+          </div>
+          <div class="result-item">
+            <div class="result-item__icon" aria-hidden="true">🚀</div>
+            <h3>Висока продуктивність</h3>
+            <p>Оптимізований код без зайніх залежностей. Цільовий показник Lighthouse Performance Score — 90+.</p>
+          </div>
+          <div class="result-item">
+            <div class="result-item__icon" aria-hidden="true">🔎</div>
+            <h3>SEO-оптимізація</h3>
+            <p>Метатеги, Schema.org, Open Graph, sitemap.xml, robots.txt, семантична структура заголовків h1–h6.</p>
+          </div>
+          <div class="result-item">
+            <div class="result-item__icon" aria-hidden="true">📖</div>
+            <h3>Документація</h3>
+            <p>Детальна документація коду, README, звіт з лабораторних робіт та задокументована Git-історія проєкту.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">05 · Контакти</div>
+        <h2 id="contact-title" class="section-title">Контактна інформація</h2>
+        <div class="contact__grid">
+          <address class="contact__info" aria-label="Контактні дані автора">
+            <div class="contact-item">
+              <div class="contact-item__icon" aria-hidden="true">👤</div>
+              <div>
+                <div class="contact-item__label">Автор</div>
+                <div class="contact-item__val">Студент університету</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item__icon" aria-hidden="true">🏛️</div>
+              <div>
+                <div class="contact-item__label">Університет</div>
+                <div class="contact-item__val">Назва університету</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item__icon" aria-hidden="true">📚</div>
+              <div>
+                <div class="contact-item__label">Спеціальність</div>
+                <div class="contact-item__val">Комп'ютерні науки</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item__icon" aria-hidden="true">📧</div>
+              <div>
+                <div class="contact-item__label">Email</div>
+                <a href="mailto:student@university.edu" class="contact-item__val contact-item__link">student@university.edu</a>
+              </div>
+            </div>
+          </address>
+          <div class="contact__links" aria-label="Посилання на проєкт">
+            <a href="https://github.com/Gazman4iK1/techvolt" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Переглянути код магазину на GitHub">
+              <div class="link-card__icon" aria-hidden="true">💻</div>
+              <div>
+                <div class="link-card__title">Код проєкту</div>
+                <div class="link-card__sub">GitHub репозиторій</div>
+              </div>
+              <span class="link-card__arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://Gazman4iK1.github.io/techvolt/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Переглянути демо магазину (відкриється у новій вкладці)">
+              <div class="link-card__icon" aria-hidden="true">🌐</div>
+              <div>
+                <div class="link-card__title">Демо сайту</div>
+                <div class="link-card__sub">GitHub Pages</div>
+              </div>
+              <span class="link-card__arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="en/index.html" class="link-card" aria-label="Англійська версія лендінгу">
+              <div class="link-card__icon" aria-hidden="true">🇬🇧</div>
+              <div>
+                <div class="link-card__title" lang="en">English version</div>
+                <div class="link-card__sub">Англійська версія</div>
+              </div>
+              <span class="link-card__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__logo">
+        <a href="#" class="logo" aria-label="TechVolt — на початок">
+          <span aria-hidden="true">⚡</span> Tech<span>Volt</span>
+        </a>
+        <p>Бакалаврська робота · 2025</p>
+      </div>
+      <nav aria-label="Навігація у підвалі">
+        <ul role="list" class="footer__links">
+          <li><a href="#about">Про роботу</a></li>
+          <li><a href="#goals">Мета</a></li>
+          <li><a href="#methodology">Методологія</a></li>
+          <li><a href="#results">Результати</a></li>
+          <li><a href="en/index.html" lang="en">English</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>© 2025 TechVolt. Розроблено в рамках бакалаврської роботи.</p>
+      <p><a href="https://validator.w3.org/check?uri=referer" target="_blank" rel="noopener noreferrer">Valid HTML5</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

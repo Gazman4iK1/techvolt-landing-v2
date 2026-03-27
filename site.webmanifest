@@ -1,0 +1,14 @@
+{
+  "name": "TechVolt — Бакалаврська робота",
+  "short_name": "TechVolt",
+  "description": "Лендінг бакалаврської роботи з розробки інтернет-магазину електроніки",
+  "start_url": "/techvolt-landing/",
+  "display": "standalone",
+  "background_color": "#0d0d14",
+  "theme_color": "#ff2d78",
+  "lang": "uk",
+  "icons": [
+    { "src": "favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
