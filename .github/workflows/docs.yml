@@ -1,0 +1,39 @@
+name: Генерація та публікація документації
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Отримати код
+        uses: actions/checkout@v4
+
+      - name: Встановити Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Встановити залежності
+        run: npm install
+
+      - name: Згенерувати JSDoc документацію
+        run: npm run docs
+
+      - name: Налаштувати GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Завантажити документацію
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs/api'
+
+      - name: Опублікувати на GitHub Pages
+        uses: actions/deploy-pages@v4
