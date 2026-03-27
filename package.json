@@ -1,0 +1,26 @@
+{
+  "name": "techvolt-landing",
+  "version": "1.0.0",
+  "description": "Лендінг бакалаврської роботи TechVolt",
+  "scripts": {
+    "lint:js": "eslint script.js en/ --ext .js",
+    "lint:css": "stylelint style.css",
+    "lint:html": "htmlhint index.html en/index.html",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:fix": "eslint script.js --fix && stylelint style.css --fix",
+    "check": "npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "htmlhint": "^1.1.4",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix"],
+    "*.css": ["stylelint --fix"],
+    "*.html": ["htmlhint"]
+  }
+}
