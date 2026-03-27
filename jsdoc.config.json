@@ -1,0 +1,22 @@
+{
+  "source": {
+    "include": ["script.js"],
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(node_modules/|docs/)"
+  },
+  "opts": {
+    "destination": "./docs/api",
+    "recurse": true,
+    "readme": "README.md",
+    "template": "default"
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "metadata": {
+    "title": "TechVolt Landing — Документація",
+    "description": "Документація JavaScript коду лендінгу бакалаврської роботи TechVolt"
+  }
+}
