@@ -1,14 +1,15 @@
 /**
  * @fileoverview Головний JavaScript файл лендінгу TechVolt.
  * Відповідає за навігацію, активні посилання та плавний скрол.
- * Інтегровано Logger та ErrorHandler для логування та обробки помилок.
+ * Інтегровано Logger, ErrorHandler та Perf для моніторингу.
  *
  * @module script
  * @author Gazman4iK1
- * @version 1.3.0
+ * @version 1.4.0
  */
 
-// ===== НАВІГАЦІЯ (виправлено лінтером ESLint) =====
+// ===== ІНІЦІАЛІЗАЦІЯ =====
+Perf.start('script-init');
 
 /**
  * Елемент кнопки бургер-меню.
@@ -72,22 +73,20 @@ const navLinks = document.querySelectorAll('.nav__link');
 
 /**
  * Intersection Observer для визначення активної секції при скролі.
- * Логує зміну активної секції на рівні DEBUG.
+ * Оптимізація: використовує requestAnimationFrame для батчингу оновлень DOM.
  *
  * @type {IntersectionObserver}
- *
- * @example
- * // Коли користувач скролить до секції #methodology:
- * // <a href="#methodology" class="nav__link active">Методологія</a>
  */
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      navLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-      });
-      Logger.debug('Navigation', `Активна секція: #${entry.target.id}`);
-    }
+  requestAnimationFrame(() => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+        Logger.debug('Navigation', `Активна секція: #${entry.target.id}`);
+      }
+    });
   });
 }, { threshold: 0.4 });
 
@@ -101,28 +100,51 @@ Logger.info('Navigation', 'Intersection Observer ініціалізовано', 
 
 /**
  * Ініціалізує плавний скрол для всіх якірних посилань сторінки.
- * Логує переходи між секціями на рівні INFO.
- *
- * @example
- * // <a href="#about">Про роботу</a>
- * // При кліку — плавно прокручує до <section id="about">
+ * Оптимізація: делегування подій — один обробник замість N.
  */
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', function handleClick(e) {
-    try {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        Logger.info('Navigation', `Перехід до секції: ${this.getAttribute('href')}`);
-      }
-    } catch (e) {
-      ErrorHandler.handle(e, 'Navigation', {
-        action: 'smooth-scroll',
-        href: this.getAttribute('href')
-      });
+document.addEventListener('click', function handleGlobalClick(e) {
+  const anchor = e.target.closest('a[href^="#"]');
+  if (!anchor) {
+    return;
+  }
+  try {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      Perf.start('smooth-scroll');
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      Perf.end('smooth-scroll');
+      Logger.info('Navigation', `Перехід до секції: ${anchor.getAttribute('href')}`);
     }
-  });
+  } catch (err) {
+    ErrorHandler.handle(err, 'Navigation', {
+      action: 'smooth-scroll',
+      href: anchor.getAttribute('href')
+    });
+  }
 });
 
-Logger.info('App', 'Ініціалізацію script.js завершено');
+// ===== КЕШУВАННЯ DOM-ЗАПИТІВ =====
+
+/**
+ * Кеш часто використовуваних DOM-елементів.
+ * Оптимізація: уникає повторних querySelector викликів у циклах.
+ * @type {Map<string, Element>}
+ */
+const domCache = new Map();
+
+/**
+ * Повертає DOM-елемент з кешу або виконує пошук.
+ * @param {string} selector - CSS-селектор
+ * @returns {Element|null}
+ */
+function cachedQuery(selector) {
+  if (!domCache.has(selector)) {
+    domCache.set(selector, document.querySelector(selector));
+  }
+  return domCache.get(selector);
+}
+
+// ===== ЗАВЕРШЕННЯ ІНІЦІАЛІЗАЦІЇ =====
+const initTime = Perf.end('script-init');
+Logger.info('App', `Ініціалізацію script.js завершено за ${initTime.toFixed(2)}ms`);
