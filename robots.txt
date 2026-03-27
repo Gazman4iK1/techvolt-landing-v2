@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Gazman4iK1.github.io/techvolt-landing/sitemap.xml
